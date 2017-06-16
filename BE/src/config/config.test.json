@@ -1,0 +1,9 @@
+{
+    "database": {
+        "connectionString": "mongodb://localhost/housing-test"
+    },
+    "server": {
+        "environment": "test",
+        "port": 3000
+    }
+}

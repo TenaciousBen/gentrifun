@@ -1,0 +1,39 @@
+{
+  "name": "gentrifun-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/src/index.js",
+    "test": "gulp && mocha --reporter spec  \"dist/test/**/*.spec.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/chai": "^3.4.34",
+    "@types/chai-http": "0.0.29",
+    "@types/express": "^4.0.36",
+    "@types/mocha": "^2.2.32",
+    "@types/mongoose": "^4.7.17",
+    "@types/morgan": "^1.7.32",
+    "@types/nconf": "0.0.34",
+    "@types/node": "^6.0.78",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "del": "^3.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-typescript": "^3.1.7",
+    "mocha": "^3.1.2",
+    "ts-node": "^1.6.1",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.10.6",
+    "morgan": "^1.7.0",
+    "nconf": "^0.8.4"
+  }
+}
