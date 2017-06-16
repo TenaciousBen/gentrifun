@@ -11,7 +11,7 @@ export interface ICrime extends Mongoose.Document {
     month: number;
     latitude: number;
     longitude: number;
-    locationId: string;
+    locationId: Object;
 };
 
 export interface OutcomeStatus {

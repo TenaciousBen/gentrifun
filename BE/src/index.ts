@@ -1,14 +1,19 @@
 import * as http from 'http';
 import * as debug from 'debug';
-
-import Server from './Server';
+import * as config from "./config";
+import * as database from "./repositories/database";
+import ServerDefinition from './Server';
 
 debug('ts-express:server');
 
+var serverConfig = config.getServerConfigs();
+var dataConfig = config.getDatabaseConfig();
+var db = database.init(dataConfig);
 const port = normalizePort(process.env.PORT || 3000);
-Server.set('port', port);
+const serverDefinition = new ServerDefinition(db);
+serverDefinition.express.set('port', port);
 
-const server = http.createServer(Server);
+const server = http.createServer(serverDefinition.express);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
