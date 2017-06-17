@@ -7,7 +7,15 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "@types/react": "^15.0.29",
+    "@types/react-dom": "^15.5.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-typescript": "^3.1.7",
+    "react-scripts": "1.0.7",
+    "typescript": "^2.3.4"
   },
   "scripts": {
     "start": "react-scripts start",
