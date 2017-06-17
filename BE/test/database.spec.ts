@@ -5,79 +5,41 @@ import { IHousingPrice } from "../src/repositories/housing-prices";
 import { ILocation } from "../src/repositories/locations";
 import * as database from '../src/repositories/database';
 import * as config from '../src/config';
+import {TestDataDto, removeSeededData, seedDatabase} from "./testUtility";
 
 const expect = chai.expect;
-const databaseConfig = config.getDatabaseConfig("test");
-const db = database.init(databaseConfig);
 
 describe("database", () => {
-
-  var location: ILocation = {
-    name: "Limehouse",
-    latitude: 51.512700,
-    longitude: -0.038948,
-    boundary: []
-  } as ILocation;
-
-  var crime: ICrime = {
-    category: "anti-social-behaviour",
-    locationType: "Force",
-    latitude: 51.512700,
-    longitude: -0.038948,
-    context: "",
-    outcomeStatus: null,
-    policeId: 20600026,
-    locationSubtype: "",
-    month: 1,
-    year: 2013
-  } as ICrime;
-
-  var housingPrice: IHousingPrice = {
-    bedrooms: 2,
-    type: "flat",
-    price: 312500,
-    month: 1,
-    year: 2013,
-    latitude: 51.512700,
-    longitude: -0.038948,
-  } as IHousingPrice;
+  
+  var data: TestDataDto;
 
   before(async () => {
-    var savedLocation = await db.locations.create(location);
-    location._id = savedLocation._id;
-    console.log("location._id", location._id, typeof location._id)
-    crime.locationId = location._id;
-    housingPrice.locationId = location._id;
-    var savedCrime = await db.crimes.create(crime);
-    crime._id = savedCrime._id;
-    var savedHousingPrice = await db.housingPrices.create(housingPrice);
-    housingPrice._id = savedHousingPrice._id;
+    data = await seedDatabase();
   });
 
   after(async () => {
-    await db.crimes.remove(crime);
-    await db.housingPrices.remove(housingPrice)
+    await removeSeededData(data);
   });
 
   it("can get created location", async () => {
-    var fetched = await db.locations.findById(location._id);
+    var fetched = await data.db.locations.findById(data.location._id);
     expect(!!fetched._id).to.be.eql(true);
-    expect(fetched._id).to.be.eql(location._id);
-    assertEqualByMatchingKeys(location, fetched);
+    expect(fetched._id).to.be.eql(data.location._id);
+    assertEqualByMatchingKeys(data.location, fetched);
   });
 
   it("can get created crime", async () => {
-    var fetched = await db.crimes.findById(crime._id);
+    var fetched = await data.db.crimes.findById(data.crime._id);
     expect(!!fetched._id).to.be.eql(true);
-    expect(fetched._id).to.be.eql(crime._id);
-    assertEqualByMatchingKeys(crime, fetched);
+    expect(fetched._id).to.be.eql(data.crime._id);
+    assertEqualByMatchingKeys(data.crime, fetched);
   });
 
   it("can get created housing price", async () => {
-    var fetched = await db.housingPrices.findById(housingPrice._id);
+    var fetched = await data.db.housingPrices.findById(data.housingPrice._id);
     expect(!!fetched._id).to.be.eql(true);
-    expect(fetched._id).to.be.eql(housingPrice._id);
-    assertEqualByMatchingKeys(housingPrice, fetched);
+    expect(fetched._id).to.be.eql(data.housingPrice._id);
+    assertEqualByMatchingKeys(data.housingPrice, fetched);
   });
 
   function assertEqualByMatchingKeys(expected:any, actual:any):void {
