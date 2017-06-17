@@ -9,7 +9,7 @@ debug('ts-express:server');
 var serverConfig = config.getServerConfigs();
 var dataConfig = config.getDatabaseConfig();
 var db = database.init(dataConfig);
-const port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(serverConfig.port);
 const serverDefinition = new ServerDefinition(db);
 serverDefinition.express.set('port', port);
 
