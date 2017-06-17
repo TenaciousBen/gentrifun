@@ -1,7 +1,7 @@
 import * as Mongoose from "mongoose";
 import { IDataConfiguration } from "../config";
 import { ICrime, CrimeModel } from "./crime";
-import { IHousingPrice, HousingPriceModel } from "./housing-prices";
+import { IHousingPrice, HousingPriceModel } from "./housingPrices";
 import { ILocation, LocationModel } from "./locations";
 export interface IDatabase  {
     crimes: Mongoose.Model<ICrime>;

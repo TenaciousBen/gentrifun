@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "gulp && node dist/src/index.js",
     "test": "gulp && mocha --reporter spec  \"dist/test/**/*.spec.js\""
   },
   "author": "",

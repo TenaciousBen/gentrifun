@@ -5,7 +5,8 @@ export abstract class RouterBase {
     protected db: IDatabase;
     public router: Router;
     constructor(db: IDatabase) {
-        db = db;
+        this.db = db;
+        this.router = Router();
     }
 
     abstract registerRoutes(): void;

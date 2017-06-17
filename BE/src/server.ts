@@ -2,7 +2,9 @@ import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
-import { CrimeByAreaRouter } from "./routes/crimeByArea";
+import { CrimeByLocationRouter } from "./routes/crimeByLocationRouter";
+import { HousingPricesByLocationRouter } from "./routes/housingPricesByLocationRouter";
+import { LocationsRouter } from "./routes/locationsRouter";
 import * as Database from "./repositories/database";
 
 // Creates and configures an ExpressJS web server.
@@ -42,12 +44,14 @@ export default class ServerDefinition {
             });
         });
         this.express.use('/', router);
-        this.registerRoute("/api/crime-by-area", CrimeByAreaRouter);
+        this.registerRouter(CrimeByLocationRouter);
+        this.registerRouter(HousingPricesByLocationRouter);
+        this.registerRouter(LocationsRouter);
     }
 
-    private registerRoute(route: string, routeType: any) {
-        var routerController = new routeType(this.db);
-        routerController.registerRoutes();
-        this.express.use(route, routerController.router);
+    private registerRouter(routerClass: any): void {
+        var router = new routerClass(this.db);
+        router.registerRoutes();
+        this.express.use(router.router);
     }
 }
