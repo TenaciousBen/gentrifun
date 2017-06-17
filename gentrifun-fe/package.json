@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react": "^15.0.29",
     "@types/react-dom": "^15.5.0",
+    "@types/react-router-dom": "^4.0.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.0",
@@ -18,7 +22,7 @@
     "typescript": "^2.3.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "gulp && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
