@@ -1,13 +1,18 @@
 {
     "compilerOptions": {
-        "outDir": "dist",
         "target": "es2015",
         "module": "es2015",
         "moduleResolution": "node",
         "jsx": "react",
-        "sourceMap": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "outDir": "src",
+        "rootDir": "ts",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "preserveConstEnums": true,
+        "allowJs": true,
+        "sourceMap": true
     },
     "include": [
         "ts/**/*.ts",
