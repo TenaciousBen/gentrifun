@@ -1,4 +1,5 @@
 import * as Mongoose from "mongoose";
+import {ObjectID} from "mongodb";
 
 export interface ICrime extends Mongoose.Document {
     category: string;
@@ -11,7 +12,7 @@ export interface ICrime extends Mongoose.Document {
     month: number;
     latitude: number;
     longitude: number;
-    locationId: Object;
+    locationId: ObjectID;
 };
 
 export interface OutcomeStatus {

@@ -1,4 +1,5 @@
 import * as Mongoose from "mongoose";
+import {ObjectID} from "mongodb";
 
 export interface IHousingPrice extends Mongoose.Document {
     bedrooms: number;
@@ -8,7 +9,7 @@ export interface IHousingPrice extends Mongoose.Document {
     year: number;
     latitude: number;
     longitude: number;
-    locationId: Object;
+    locationId: ObjectID;
 };
 
 export const HousingPriceSchema = new Mongoose.Schema(

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp && node dist/src/index.js",
-    "test": "gulp && mocha --reporter spec  \"dist/test/**/*.spec.js\""
+    "test": "gulp && mocha --reporter spec  \"dist/test/**/*.spec.js\"",
+    "seed": "gulp && node dist/tools/seed.js"
   },
   "author": "",
   "license": "ISC",
