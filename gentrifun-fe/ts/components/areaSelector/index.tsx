@@ -29,7 +29,6 @@ export class AreaSelector extends React.Component<IAreaSelectorProps, IAreaSelec
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             var selectedLocationId = store.getState().locationReducer.get("locationId");
-            console.log("area sub", selectedLocationId);
             if (this.state.selectedLocationId !== selectedLocationId) this.setState({ selectedLocationId: selectedLocationId });
         });
         var locationService = new LocationService();
@@ -44,7 +43,6 @@ export class AreaSelector extends React.Component<IAreaSelectorProps, IAreaSelec
 
     locationSelected(location: ILocation) {
         var action = Actions.locationChanged(location._id);
-        console.log("locationSelected", action);
         store.dispatch(action);
     }
 

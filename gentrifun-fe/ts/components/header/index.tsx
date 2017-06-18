@@ -3,7 +3,6 @@ import * as React from 'react';
 import logo from './logo.svg';
 import './header.css';
 import { Link } from "react-router-dom";
-import Spinner from "../spinner";
 import store from "../../shared/redux/store";
 import { Unsubscribe } from "redux";
 import { routeChanged } from "../../shared/redux/actions";
@@ -30,7 +29,6 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             var locationId = store.getState().locationReducer.get("locationId");
-            console.log("header sub", locationId);
             if (this.state.locationId !== locationId) this.setState({ locationId: locationId });
             var routeName = store.getState().routeReducer.get("routeName");
             if (this.state.active !== routeName) this.setState({ active: routeName });
@@ -52,9 +50,6 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
                 <div className="brand">
                     <img src={logo} alt="logo" />
                     <h2>Gentrifun</h2>
-                </div>
-                <div className="pull-right">
-                    <Spinner />
                 </div>
                 <nav className="navbar navbar-inverse navbar-static-top">
                     <ul className="nav navbar-nav">

@@ -7,9 +7,7 @@ const initialState = Immutable.fromJS({
 });
 
 export default (state = initialState, action: Action) => {
-    console.log("route reducer before", state.get("routeName"));
     if (action.type === ROUTE_CHANGED) {
-        console.log("route reducer changed started", action.payload);
         return state.set('routeName', action.payload);
     }
     return state;

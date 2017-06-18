@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IHousingPrice } from "../../../shared/models";
 import SizedContainer from "../sizedContainer";
+import Monetary from "../monetary";
 
 export interface IHousingPriceTableState {
 }
@@ -46,7 +47,7 @@ class HousingPricesTable extends React.Component<IHousingPriceTableProps, IHousi
                                             {price.bedrooms}
                                         </td>
                                         <td>
-                                            {price.price}
+                                            <Monetary currency="GBP" value={price.price}></Monetary>
                                         </td>
                                         <td>
                                             {price.latitude}

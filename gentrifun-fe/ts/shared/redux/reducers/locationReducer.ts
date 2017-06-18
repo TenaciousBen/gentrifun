@@ -6,11 +6,8 @@ const initialState = Immutable.fromJS({
 });
 
 export default (state = initialState, action: Action) => {
-    console.log("location reducer before", action.payload);
     if (action.type === LOCATION_SELECTED) {
-        console.log("location reducer selected", action.payload);
         return state.set('locationId', action.payload);
     }
-    console.log("location reducer after", state.get("locationId"));
     return state;
 };

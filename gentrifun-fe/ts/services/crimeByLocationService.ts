@@ -10,10 +10,8 @@ export class CrimeByLocationService extends CachedService {
         var key = `CrimeByLocationService:getCrimeByArea?locationId=${locationId}`;
         var locations = this.get(key);
         if (locations) return new Promise(() => locations);
-        //store.dispatch(Actions.apiCallStarted());
         return Axios.get(`http://${config.apiBase}/api/crime-by-location/${locationId}`)
             .then(response => {
-                //store.dispatch(Actions.apiCallEnded());
                 this.set(key, response.data);
                 return response.data;
             });

@@ -36,7 +36,6 @@ export class Overview extends React.Component<IOverviewProps, IOverviewState> {
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             var locationId = store.getState().locationReducer.get("locationId");
-            console.log("overview sub", locationId);
             if (this.state.locationId !== locationId) this.loadLocationAndSetState(locationId);
         });
         var locationId = store.getState().locationReducer.get("locationId");
@@ -52,7 +51,6 @@ export class Overview extends React.Component<IOverviewProps, IOverviewState> {
         return locationService.getLocations()
             .then(locations => {
                 var location = locations.find(l => l._id === locationId);
-                console.log("overview location", location);
                 this.setState({ locationId: locationId, location: location });
                 return crimeService.getCrimeByArea(locationId);
             })
@@ -66,7 +64,6 @@ export class Overview extends React.Component<IOverviewProps, IOverviewState> {
     }
 
     render() {
-        console.log("this.state.location", this.state.location);
         if (!this.state.location) return <NoLocationWarning />;
         return (
             <div className="container">

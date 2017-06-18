@@ -10,10 +10,8 @@ export class HousingPricesByLocationService extends CachedService {
         var key = `HousingPricesByLocationService:getHousingPricesByLocation?location=${locationId}`;
         var locations = this.get(key);
         if (locations) return new Promise(() => locations);
-        //store.dispatch(Actions.apiCallStarted());
         return Axios.get(`http://${config.apiBase}/api/housing-prices-by-location/${locationId}`)
             .then(response => {
-                //store.dispatch(Actions.apiCallEnded());
                 this.set(key, response.data);
                 return response.data;
             });
