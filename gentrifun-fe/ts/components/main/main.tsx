@@ -16,6 +16,7 @@ class Main extends React.Component<{},{}> {
                     <Header />
                     <Switch>
                         <Route exact path='/' component={AreaSelector} />
+                        <Route exact path='/overview' component={Overview} />
                         <Route path='/overview/:id' component={Overview} />
                     </Switch>
                 </div>
