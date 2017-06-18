@@ -1,10 +1,10 @@
 import { Switch, Route } from 'react-router-dom';
 import * as React from 'react';
-import Header from "../header/header";
-import AreaSelector from "../areaSelector/areaSelector";
-import Overview from "../overview/overview";
+import Header from "../header";
+import AreaSelector from "../areaSelector";
+import Overview from "../overview";
 
-class Main extends React.Component<{},{}> {
+class Routes extends React.Component<{},{}> {
     constructor() {
         super();
     }
@@ -25,4 +25,4 @@ class Main extends React.Component<{},{}> {
     }
 }
 
-export default Main;
+export default Routes;
