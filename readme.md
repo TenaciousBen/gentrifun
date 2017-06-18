@@ -1,7 +1,7 @@
 # Prerequisites
 
 1. Yarn should be installed globally
-2. A local MongoDB should be running, and accessible at `mongodb://localhost/`
+2. A local MongoDB should be running, and accessible at `mongodb://localhost/` (install mongo and run `mongod` at the terminal if there isn't a mongodb running)
 
 # First install
 
@@ -11,6 +11,11 @@
 4. In the BE project run `yarn start` to bootup the server (run `yarn test` if you want to see tests)
 5. In the FE project run `yarn start` to bootup the react-scripts app server
 6. Go to `http://localhost:3000` if you aren't automatically taken there by react-scripts
+
+# Use
+
+1. Select a location by clicking the 'select' button
+2. Go to the overview tab to view the location's data
 
 # Future roadmap
 
