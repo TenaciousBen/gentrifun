@@ -5,6 +5,7 @@ import { ILocation } from "../../shared/models";
 import { LocationService } from "../../services/locationService";
 import store from "../../shared/redux/store";
 import * as Actions from "../../shared/redux/actions";
+import { Unsubscribe } from "redux";
 
 export interface IAreaSelectorProps extends LocationRoutingProps {
 
@@ -16,24 +17,29 @@ export interface IAreaSelectorState {
 }
 
 export class AreaSelector extends React.Component<IAreaSelectorProps, IAreaSelectorState> {
+    unsubscribe: Unsubscribe;
     constructor() {
         super();
         this.state = {
             locations: [],
-            selectedLocationId: null
+            selectedLocationId: store.getState().locationReducer.get("locationId")
         };
-        store.subscribe(() => {
-            var selectedLocationId = store.getState().locationReducer.get("locationId");
-            console.log("area sub", selectedLocationId);
-            this.setState({ selectedLocationId: selectedLocationId });
-        });
     }
 
     componentDidMount() {
+        this.unsubscribe = store.subscribe(() => {
+            var selectedLocationId = store.getState().locationReducer.get("locationId");
+            console.log("area sub", selectedLocationId);
+            if (this.state.selectedLocationId !== selectedLocationId) this.setState({ selectedLocationId: selectedLocationId });
+        });
         var locationService = new LocationService();
         locationService.getLocations().then(locations => {
             this.setState({ locations: locations });
         });
+    }
+
+    componentWillUnmount() {
+        if (this.unsubscribe) this.unsubscribe();
     }
 
     locationSelected(location: ILocation) {
